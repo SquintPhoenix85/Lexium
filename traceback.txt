@@ -1,22 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 196, in script
-    al "Empezaremos por la biblioteca y los pasillos, ¿alguien me quiere acompañar a la biblioteca?"
-Exception: Sayer 'al' is not defined.
+  File "game/script.rpy", line 363, in script
+    show black with drama
+TypeError: Fade() missing 2 required positional arguments: 'hold_time' and 'in_time'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 196, in script
-    al "Empezaremos por la biblioteca y los pasillos, ¿alguien me quiere acompañar a la biblioteca?"
-  File "C:\Program Files\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 881, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "C:\Program Files\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 774, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'al' is not defined.
+  File "game/script.rpy", line 363, in script
+    show black with drama
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 1658, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\exports.py", line 1653, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\display\core.py", line 2798, in do_with
+    return self.interact(trans_pause=True,
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\display\core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs) # type: ignore
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\display\core.py", line 3746, in interact_core
+    trans = self.ongoing_transition[None](
+TypeError: Fade() missing 2 required positional arguments: 'hold_time' and 'in_time'
 
 Windows-10-10.0.19041 AMD64
 Ren'Py 8.0.2.22081402
-Lexium 0.2
-Wed Sep 28 18:10:16 2022
+Lexium PREVIEW - 0.2a
+Fri Sep 30 10:07:02 2022
