@@ -6,7 +6,8 @@ define a2 = Character("Pedrito", color="#FFFFFF")
 define a3 = Character("Camilo", color="#FFFFFF")
 define b = Character("Bibliotecaria", color="#FFFFFF")
 define t = Character("Todos")
-define drama = Fade(5.0,0.0,5.0) 
+define dramain = Fade(2.5,0.0,0.0)
+define dramaout = Fade(0.0,0.0,2.5) 
 label start:
     #first level start
     default sour = False
@@ -49,19 +50,15 @@ label start:
     
     scene bg_kitchen with fade
     hide bg_room 
-    image dylan_smile_anim:
-        "dylan_idle_small.png"
-        pause 3.0
-        "dylan_smile_small.png"
-        pause 2.0
-        "dylan_idle_small.png"
-   
     show mom_idle at right
     with dissolve
-    show dylan_smile_anim at left
-    with dissolve
+    show dylan_smile_small at left
+    with easeinleft 
 
     m "Necesito que me vayas a hacer un mandado, hijo."
+
+    hide dylan_smile_small
+    show dylan_idle_small at left
 
     "{i}Te sientes incomodado por la solicitud. {/i}"
     d "...Claro ma."
@@ -70,11 +67,11 @@ label start:
     m "Necesito que vayas al súper, y me consigas salsa de tomate con {i}mostaza dulce{/i}."
     m "No la confundas, la necesito para hacer la comida."
     
-    d "...Bueno"
+    d "...Bueno."
     d "Enseguida vengo."
 
+    hide dylan_talk_small with dissolve
     hide mom_idle with dissolve 
-    hide dylan_smile_anim with dissolve
     
     scene bg_street with fade
     hide bg_kitchen 
@@ -98,7 +95,7 @@ label start:
             "{i}Algo no cuadraba en el nombre de la peli, pero la ibas a buscar de igual manera.{/i}"
             $ movie = False
     hide poster_placeholder_m with dissolve 
-    show dylan_idle_small with dissolve
+    show dylan_idle_small with easeinleft
     "{i}Entras al pasillo, y llegas directamente al pasillo de los aderezos{/i}."
     "{i} Ves dos recipientes de salsa.{/i}"
     d "{i}{color=#8f8f8f}¿Cuál fue la salsa que pidió mamá?{/color}{/i}"
@@ -110,35 +107,37 @@ label start:
             $ sweet=True
             d "{i}Esperemos que sea esta...{/i}"
     "{i}Pagas por la salsa y regresas a casa.{/i}"
-    hide dylan_idle_small with dissolve
+    hide dylan_idle_small with moveoutleft
     scene bg_kitchen with fade
     hide bg_market 
     show dylan_talk_small at left 
-    with dissolve
+    with easeinleft
     d "¡Llegué mamá!"
     show mom_idle at right
-    with dissolve
+    with easeinright
     m "Hola hijo, ¿conseguiste la salsa?"
     d "Ah si, aqui está, ¿si era esta cierto?"
     if sour == True:
-        show dylan_smile_anim at left
+        show dylan_smile_small at left
+        hide dylan_talk_small
         m "{color=#b1f5a4}¡Bien! Te va a encantar la comida.{/color}"
         $ rightans = rightans + 1
-        hide dylan_smile_anim with dissolve
         hide mom_idle with dissolve
-        hide dylan_talk_small 
-        "{i}Mamá y tú cenaron juntos, la comida estaba deliciosa y te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
+        hide dylan_smile_small with dissolve
+        "{i}Mamá y tú cenaron juntos- ¡la comida estaba deliciosa! Justo como lo había dicho ella.." 
+        "{i}Al fin y al cabo, te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
         show black  
         hide bg_kitchen with fade
     elif sweet == True:
-        show dylan_idle_small at left  
+        show dylan_idle_small at left
+        hide dylan_talk_small  
         m "{color=#f5a5a4}Ahh...esta no era...{/color}"
         m "Pero no te preocupes, ¡de igual manera sabrá bien!."
         $ wrongans = wrongans + 1
         hide mom_idle with dissolve
-        "{i}Mamá y tú cenaron juntos, pero un sabor amargo permaneció en tu boca todo el tiempo."
-        "{i}al final te sentías tan cansado que fuiste a dormir a tu cuarto enseguida."
-        hide dylan_talk_small
+        hide dylan_idle_small with dissolve
+        "{i}Mamá y tú cenaron juntos, pero un sabor amargo permaneció en tu boca todo el tiempo-{/i}"
+        "{i}Al fin y al cabo te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
         show black 
         hide bg_kitchen with fade
 
@@ -160,7 +159,7 @@ label start:
     "{i}A tus oidos llegó una melodía suave y dulce... Era el canto de la pequeña ave.{/i}"
     scene dream_river with fade
     hide dream_forest
-    "{i}De la nada, fuiste transportado a otra¿o lado, parece que del mismo bosque.{/i}"
+    "{i}De la nada, fuiste transportado a otro lado, parece que del mismo bosque.{/i}"
     "{i}Era un río, iridiscente, como si hubiera una bombilla por debajo del mismo...{/i}"
     "{i}Parecía algo {b}mágico{/b}, el agua cristalina y los pequeños nenúfares..{/i}"
     "{i}Fue en ese entonces que notaste una hojita, con algo escrito en ella.{/i}"
@@ -171,9 +170,10 @@ label start:
     scene black with fade
     hide dream_river
     "{i}Te estabas acercando más y más al fondo, al origen de la voz, y fue justo entonces cuando...{/i}"
-    "{i}{color=#8f8f8f}¡¡DESPIERTA!!{/i}{/color}"
+    "{i}{color=#FFFFFF}¡¡DESPIERTA!!{/i}{/color}"
     scene bg_room with dissolve
-    hide black 
+    hide black
+    with vpunch 
     show mom_idle at right
     show dylan_idle_small at left
     d "¡GAAAH!"
@@ -360,5 +360,42 @@ label start:
     show bg_bed with fade
     "{i}Lentamente te quedaste dormido,{/i}"
     "{i}{color=#83a5ae}Transportado a ese bosque encantado...{/i}{/color}"
-    show black with drama 
+    show black with dramain 
     hide bg_bed
+    show dream_river with dramaout 
+    "{i}Esta vez te levantaste al lado del río...{/i}"
+    "{i}Con el petirrojo posado en una piedra cerca a ti...{/i}"
+    d "Hola amiguito...."
+    d "¿De donde viniste?"
+    "{i}El petirrojo, como si entendiera lo que dijeras, levantó el vuelo.{/i}"
+    "{i}Se dirigió al río, y desapareció en una nube de polvo iridiscente.{/i}"
+    "{i}De nuevo, la voz llamaba a ti desde adentro del río..."
+    "{i}{color=#8f8f8f}Ven aquí, niño.....{/i}{/color}"
+    "{i}{color=#8f8f8f}Tanto talento....{/i}{/color}"
+    "{i}{color=#8f8f8f}Tanto potencial....{/i}{/color}"
+    "{i}{color=#8f8f8f}Todo gastado.....{/i}{/color}"
+    "{i}{color=#8f8f8f}Acércate.....{/i}{/color}"
+    "{i}{color=#8f8f8f}Y cumple tus sueños....{/i}{/color}"
+    "{i}La voz penetró en tu alma....{/i}"
+    "{i}Y sin pensarlo, saltaste en el río-"
+    show black 
+    hide dream_river
+    show bg_room with vpunch
+    hide black
+    d "¡¡OUCH!!"
+    d "Ayayay.... mi cabeza..."
+    d "Dios.... "
+    "{i}Sin darte cuenta, saltaste de tu cama.{/i}"
+    show dylan_idle_small with dissolve
+    d "Solo fue una pesadilla...."
+    d "Que asco."
+    hide dylan_idle_small with dissolve
+    "{i}Tuviste suerte- mamá aún no había llegado.{/i}"
+    "{i}Se hubiera armado la de las grandes si hubiera visto esto...{/i}"
+    "{i}Decidiste intentar hacer los problemas de matemáticas de nuevo.{/i}"
+    d "A ver.... el problema dice-"
+    "Zi qara qreqarar um qazte1 mecezitaz:"
+    "l/E de 7S0g be asúcar-"
+    "E/4 kuartoz be un cilo de harima-"
+    "y E/S be uma darra de namtepuilla be 200 qranoz-"
+    "¿Qué cantidades requieres para cada uno?"

@@ -2,21 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 216: expected statement.
-    l_solve=True
-           ^
-
-File "game/script.rpy", line 219: expected statement.
-    l_solve=False
-           ^
-
-File "game/script.rpy", line 222: expected statement.
-    l_solve=False
-           ^
-
-File "game/script.rpy", line 226: expected statement.
-    l_solve=False
-           ^
+File "game/script.rpy", line 374: expected statement.
+    zoomin
+          ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Wed Sep 28 17:53:53 2022
+Fri Sep 30 13:28:16 2022
