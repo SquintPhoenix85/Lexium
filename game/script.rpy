@@ -5,7 +5,8 @@ define a1 = Character("Joel", color="#FFFFFF")
 define a2 = Character("Pedrito", color="#FFFFFF")
 define a3 = Character("Camilo", color="#FFFFFF")
 define b = Character("Bibliotecaria", color="#FFFFFF")
-define t = Character("Todos") 
+define t = Character("Todos")
+define drama = Fade(5.0,0.0,5.0) 
 label start:
     #first level start
     default sour = False
@@ -13,15 +14,18 @@ label start:
     default l1_solve = False
     default l2_solve = False 
     default silence = False
+    default movie = False
+    default wrongans = 0
+    default rightans = 0 
     scene black
     hide bg_day1 with fade
     play music salem volume 0.2
 
     "Si la raiz de cuarenta y nueve es... "
     "¡Dylan!"
-    "..¿6?"
+    "¿...?"
+    "...Sería...¿6?"
     "¡DYLAN!"
-
     "...Entonces la raiz de kuɐtro..."
     
     play sound fo
@@ -37,31 +41,8 @@ label start:
 
     show dylan_idle_small
     with dissolve
-
-    d "¿Qué es esto?"
-    
-    hide dylan_idle_small
-    with dissolve
-    show dylan_idle_small at left
-    with dissolve
-    show paper_piece at right
-    with dissolve
-
-    d "Una pieza de papel. Me pregunto que hará aqui."
-    hide paper_piece
-    with dissolve
-    "{i}Un póster nuevo en la sala llama tu atención.{/i}"
-    show poster_placeholder_m at right
-    with dissolve   
-    "¿Que dice el póster?"
-    menu:
-        "Procsimamente em teatroz cercanoz a ti...":
-            d "{color=#f5a5a4}Quisiera saber que dice el afiche en realidad...{/color}" 
-            default wrongans = 1
-        "Próximamente en teatros cercanos a tí...":
-            d "{color=#b1f5a4}Quisiera saber que dice el afiche en realidad...{/color}" 
-            default rightans = 1
-    hide poster_placeholder_m with dissolve
+    d "¡Ya voy!"
+    d "{i}{color=#8f8f8f}¿Ahora que querrá mamá que haga? Ella sabe que estoy estudiando...{/i}{/color}"
     m "¡DYLAN!"
     d "¡En camino!"
     hide dylan_idle_small with dissolve
@@ -83,11 +64,14 @@ label start:
     m "Necesito que me vayas a hacer un mandado, hijo."
 
     "{i}Te sientes incomodado por la solicitud. {/i}"
-    d "Claro ma. ¿Que necesitas?"
+    d "...Claro ma."
+    d "¿Que necesitas?"
     
-    m "Necesito que vayas al súper, y me consigas salsa de tomate con{i} mostaza dulce {/i}. No te confundas."
+    m "Necesito que vayas al súper, y me consigas salsa de tomate con {i}mostaza dulce{/i}."
+    m "No la confundas, la necesito para hacer la comida."
     
-    d "Bueno, enseguida vengo."
+    d "...Bueno"
+    d "Enseguida vengo."
 
     hide mom_idle with dissolve 
     hide dylan_smile_anim with dissolve
@@ -96,18 +80,35 @@ label start:
     hide bg_kitchen 
     
     "{i}Después de una corta caminata, llegas al supermercado.{/i}"
-    "{i}Nunca te gusta salir a caminar, hay mucho ruido y demás;{/i}"
-    "{i}Pero hoy la tarde se veía especialmente magnífica, y no pudiste saber porqué.{/i}"
+    "{i}Nunca te gusta salir a caminar, hay mucho ruido y tantas personas te ponen nervioso;{/i}"
+    "{i}Pero hoy la tarde se veía especialmente magnífica, pero no sabías con certeza porqué.{/i}"
+
     scene bg_market with fade
     hide bg_street 
+    "{i}Al entrar al supermercado, te topaste con un póster clásico de películas.{/i}"
+    "{i}Era una peli clásica, de las que normalmente ves..{/i}"
+    "{i}Querías verla, pero no podías entender el nombre...{/i}"
+    show poster_placeholder_m with pixellate
+    d "{i}{color=#8f8f8f}¿Qué dice el póster?{/i}{/color}"
+    menu:
+        "¿Ciudadano Kane?":
+            "{i}Decidiste que, cuando tuvieras tiempo, buscarías si se llamaba así.{/i}"
+            $ movie = True
+        "¿Eludadamo James?":
+            "{i}Algo no cuadraba en el nombre de la peli, pero la ibas a buscar de igual manera.{/i}"
+            $ movie = False
+    hide poster_placeholder_m with dissolve 
     show dylan_idle_small with dissolve
-    "{i}Entras al pasillo, y ves dos recipientes de salsa."
+    "{i}Entras al pasillo, y llegas directamente al pasillo de los aderezos{/i}."
+    "{i} Ves dos recipientes de salsa.{/i}"
     d "{i}{color=#8f8f8f}¿Cuál fue la salsa que pidió mamá?{/color}{/i}"
     menu:
-        "Escoges el que dice \"moztasa argai\"":
+        "Escoges el que dice \"noztasa aqrla\"":
             $ sour=True
-        "Escoges el que dice \"moztasa dluse\"":
+            d "{i}Esperemos que sea esta...{/i}"
+        "Escoges el que dice \"noztasa bu1s3\"":
             $ sweet=True
+            d "{i}Esperemos que sea esta...{/i}"
     "{i}Pagas por la salsa y regresas a casa.{/i}"
     hide dylan_idle_small with dissolve
     scene bg_kitchen with fade
@@ -117,48 +118,59 @@ label start:
     d "¡Llegué mamá!"
     show mom_idle at right
     with dissolve
+    m "Hola hijo, ¿conseguiste la salsa?"
+    d "Ah si, aqui está, ¿si era esta cierto?"
     if sour == True:
         show dylan_smile_anim at left
         m "{color=#b1f5a4}¡Bien! Te va a encantar la comida.{/color}"
         $ rightans = rightans + 1
         hide dylan_smile_anim with dissolve
+        hide mom_idle with dissolve
+        hide dylan_talk_small 
+        "{i}Mamá y tú cenaron juntos, la comida estaba deliciosa y te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
+        show black  
+        hide bg_kitchen with fade
     elif sweet == True:
         show dylan_idle_small at left  
-        m "{color=#f5a5a4}Ay hijo, esta no era... No te preocupes, de igual manera sabrá bien.{/color}"
+        m "{color=#f5a5a4}Ahh...esta no era...{/color}"
+        m "Pero no te preocupes, ¡de igual manera sabrá bien!."
         $ wrongans = wrongans + 1
-        hide dylan_idle_small with dissolve
-    hide mom_idle with dissolve
-    "{i}Mamá y tú cenaron juntos, y te sentías tan cansado que fuiste a dormir enseguida."
-    hide dylan_talk_small
-    show black 
-    hide bg_kitchen with fade
+        hide mom_idle with dissolve
+        "{i}Mamá y tú cenaron juntos, pero un sabor amargo permaneció en tu boca todo el tiempo."
+        "{i}al final te sentías tan cansado que fuiste a dormir a tu cuarto enseguida."
+        hide dylan_talk_small
+        show black 
+        hide bg_kitchen with fade
+
     
     "{i}Normalmente, no sueñas mucho.{/i}"
     "{i}Tu realidad de videojuegos y películas deja mucho que desear en términos de soñar.{/i}"
     scene dream_bg_street with fade
     hide black
-    "{i}Solo deseas que un día pudieras caminar por la calle sin la ansiedad de los sonidos que tanto te molestan.{/i}"
-    "{i}De repente, te das cuenta de que el parque al que usualmente vas está cubierto de nieve.{/i}"
+    "{i}Solo deseas que un día pudieras caminar por la calle sin tener que sentirte tan abrumado por los sonidos de la gente y los autos{/i}"
+    "{i}De repente, te das cuenta de que el parque al que usualmente vas está cubierto de nieve, blanca y suave.{/i}"
     scene dream_forest with fade
     hide dream_bg_street
-    "{i}De repente, el parque que visitabas todos los días se había convertido en un bosque, extenso, inmiscuido en un aura de oscuridad, y neblina.{/i}"
-    "{i}Continuaste caminando, y te encontraste a la distancia con una pequeña ave...{/i}"
-    d "¿Un petirrojo? ¿Que haces aquí amigo?"
-    "{i}El petirrojo, casi conociendote, despegó, revoloteando hasta posarse en tu hombro.{i}"
-    "{i}Casi al instante, el petirrojo comenzó a cantar una melodía suave y dulce...{/i}"
+    "{i}El parque que visitabas todos los días se había convertido en un bosque, extenso, inmiscuido en un aura de oscuridad, y neblina, tenía un aura casi mágica.{/i}"
+    "{i}Continuaste caminando, y te encontraste a la distancia con una pequeña ave, posada al pie de un tronco hueco...{/i}"
+    d "¿Un petirrojo?"
+    "{i}Lo miraste curioso, y él pareció hacer lo mismo."
+    d "¿Que haces aquí amigo?"
+    "{i}El petirrojo, casi como si te conociera, despegó, revoloteando hasta posarse en tu hombro.{i}"
+    "{i}A tus oidos llegó una melodía suave y dulce... Era el canto de la pequeña ave.{/i}"
     scene dream_river with fade
     hide dream_forest
-    "{i}De la nada, fuiste transportado a otra parte del bosque.{/i}"
+    "{i}De la nada, fuiste transportado a otra¿o lado, parece que del mismo bosque.{/i}"
     "{i}Era un río, iridiscente, como si hubiera una bombilla por debajo del mismo...{/i}"
-    "{i}Parecía algo {b}mágico{/b}, y no podías explicar el porqué.{/i}"
+    "{i}Parecía algo {b}mágico{/b}, el agua cristalina y los pequeños nenúfares..{/i}"
     "{i}Fue en ese entonces que notaste una hojita, con algo escrito en ella.{/i}"
     d "{i}El futuro está en tus manos...{/i}"
-    "{i}De repente te diste cuenta; no tuviste problemas para leer.{/i}"
-    "{i}Algo te decía, 'Acércate... tengo el secreto que buscas...'{/i}"
-    "{i}La curiosidad te ganó la batalla, y decidiste entrar al río.{/i}"
+    "{i}De repente te diste cuenta; no tuviste problemas para leerla.{/i}"
+    "{i}Una voz te decía, 'Acércate... tengo el secreto que buscas...'{/i}"
+    "{i}La curiosidad te ganó la batalla, y decidiste entrar de lleno al río.{/i}"
     scene black with fade
     hide dream_river
-    "{i}Te estabas acercando más y más al río, y fue justo entonces cuando...{/i}"
+    "{i}Te estabas acercando más y más al fondo, al origen de la voz, y fue justo entonces cuando...{/i}"
     "{i}{color=#8f8f8f}¡¡DESPIERTA!!{/i}{/color}"
     scene bg_room with dissolve
     hide black 
@@ -167,38 +179,38 @@ label start:
     d "¡GAAAH!"
     m "Por dios hijo, ¡que vas tarde a la escuela!"
     m "Levántate ya mijo, dale, dale rápido."
-    "{i}No puedes contenerte y bostezas fuertemente.{/i}"
+    "{i}Estas bastante sorprendido, tu corazón parece que va a explotar, pero no puedes contenerte y bostezas fuertemente.{/i}"
     d "Ok, ok, voy."
     "{i}Te cambiaste lo más rapido posible, y saliste al colegio.{/i}"
     scene bg_street with fade
     hide bg_room
-    "{i} Después de ese sueño, querías pasar por el parque.{/i}"
+    "{i} Después de ese sueño, querías pasar por el parque, puede que hoy no estuviera tan concurrido como otros días.{/i}"
     "{i}Ahora ibas un poco corto de tiempo, así que solo fuiste directo a la escuela.{/i}"
     scene black with pixellate
-    "{i}Después de una corta caminata, llegaste a la escuela.{/i}"
-    "{i}Tu 'problema', al menos asi lo llamaban todos. no te dejaba estudiar muy bien.{/i}"
-    "{i}Para ir al colegio, era necesaria mucha fuerza de voluntad para seguir adelante.{/i}"
-    "{i}No te detuviste a hablar con nadie, y solo llegaste directo al salón."
+    "{i}Después de una corta caminata, finalmente llegaste a tu salón.{/i}"
+    "{i}Tu 'problema', como lo llamaban todos, o al menos la mayoría, no te dejaba estudiar muy bien.{/i}"
+    "{i}Para ir al colegio y aguantar 8 horas de letras y numeros, era necesaria mucha fuerza de voluntad y paciencia.{/i}"
+    "{i}No te detuviste a hablar con nadie, y solo llegaste directo a tu puesto.{/i}"
     scene bg_classroom with pixellate
     hide black
     show professor with dissolve
     mr "Ok, clase. Hoy vamos a hacer una actividad en grupo."
     mr "¡Grupos de 4 por favor! ¡Y rápido!"
     hide professor with dissolve
-    "{i}Seguías pesado por el sueño, asi que lentamente te paraste a buscar a tus amigos.{/i}"
+    "{i}Seguías pesado por el sueño, asi que te paraste lentamente a buscar a tus amigos.{/i}"
     "{i}Al cabo de unos minutos de gritos y ruido, el salón estaba organizado.{/i}"
     show professor with dissolve 
     mr "Hoy les tengo una actividad de búsqueda del tesoro."
-    mr "Alrededor del colegio, hay unos elementos escondidos. Cada grupo tiene una lista de ellos, ojo que no se les pierda."
-    mr "-Porque no les voy a dar más."
+    mr "Alrededor del colegio, hay unos elementos escondidos. Cada grupo tiene una lista de ellos."
+    mr "Pero ojo que no se les pierda porque no les voy a dar más."
     mr "Junto a esos elementos, habrá unos acertijos."
-    mr "¡El primer grupo en traer los elementos completos tendra una recompensa en la asignaura!"
+    mr "¡El primer grupo en traer los elementos completos tendrá una recompensa en la asignatura!"
     mr "Ahora vayan, que no tienen todo el día."
     hide professor with dissolve 
     "{i}Te reúnes con tu grupo de amigos para que hablen sobre su estrategia.{/i}"
     show dylan_idle_small with fade
-    a1 "Empezaremos por la biblioteca y los pasillos, ¿alguien me quiere acompañar a la biblioteca?"
-    "{i}Figurabas que- al ser la biblioteca, habría más silencio que afuera de esta.{/i}"
+    a1 "Bien, empezaremos por la biblioteca y los pasillos, ¿alguien me quiere acompañar a la biblioteca?"
+    "{i}Figurabas que, al ser la biblioteca, habría más silencio que en el pasillo o el patio.{/i}"
     d "¡¡YO!!"
     a1 "Em, ok pues."
     scene bg_hall with pixellate
@@ -208,19 +220,19 @@ label start:
     hide bg_classroom
     a1 "Esto es genial, ¡¿muy emocionante no?!"
     d "Totalmente...."
-    "{i}No te sientes muy llamado a esto, pero aun así sigues buscando.{/i}"
+    "{i}No te sientes muy atraído a esto, pero aun así sigues buscando.{/i}"
     d "¡Encontre uno!"
     b "¡SHHHHH! ¡Estamos en una biblioteca joven, no en el mercado!" 
-    d "¡Lo siento!"
+    d "¡Ah, lo siento!"
     "{i}Sales rápidamente de la biblioteca, junto a Joel."
     a1 "¡Bien! A ver el acertijo."
     d "{i}{color=#8f8f8f}Hay Z qabres y Z hijos, qero zolo hay E qerzonaz. ¿Puienez som?{/i}{/color}"
     menu:
         "¿No serán un abuelo, un padre y un hijo?":
-            a1 "Hmmm... puede ser, habrá que ver a futuro."
+            a1 "Hmmm... puede ser, habrá que mirar."
             $ l1_solve=True
-        "Ay, no sé. Nunca me gustaron estos problemas.":
-            a1 "Pero, si sigues actúando así nunca llegarás a nada...."
+        "No estoy muy seguro, nunca me gustaron estos problemas.":
+            a1 "Pero Dylan, si sigues actúando así nunca llegarás a nada...."
             $ l1_solve=False
         "¿Tu que crees que es?":
             a1 "Hmm... de pronto son una pareja y un abuelo.. no sé."
@@ -230,13 +242,13 @@ label start:
             d "¡AH! Ah, si si. No pasa nada."
             $ l1_solve=False
             $ silence=True 
-    a1 "Regresemos a estos chicos, vamos a ver que han visto."
+    a1 "Regresemos con los chicos, vamos a ver que han visto."
     "{i}Aún distraido y cansado, respondes-{/i}"
     d "Ok, vamos."
     scene bg_hall with pixellate
     hide bg_library_l
-    "{i}Cuando logran encontrar a tus amigos, ya ellos tienen los elementos-{/i}"
-    "{i}Solo les falta los acertijos.{/i}"
+    "{i}Cuando logran encontrar a tus amigos, ya ellos tienen los elementos de la lista.{/i}"
+    "{i}Solo les faltaban los acertijos.{/i}"
     if l1_solve == True:
         a1 "¿Que acertijos tienen listos?"
         a2 "Casi todos, solo nos falta uno."
@@ -250,8 +262,10 @@ label start:
             "Si son 30 niños para 30 moscas.... ¿no serían 3 minutos igualmente?":
                 a2 "Oye si.... me gusta."
                 a1 "Y eso que por fin haces algo bien?"
+                d "{i}...{/i}"
+                d "{i}...¿ok?{/i}"
                 $ l2_solve = True
-            "Em no tengo ni idea.":
+            "Realmente no tengo ni idea, lo siento.":
                 a2 "Ah."
                 a3 "No creen que es una hora?"
                 d "Dios..."
@@ -264,7 +278,7 @@ label start:
             a1 "No le digan que resuelva nada. No quiere colaborar."
             d "....."
             a2 "No seas tan duro, todos tenemos días malos."
-            a1 "¡PERO EL SIEMPRE ES ASÍ!"
+            a1 "¡PERO ÉL SIEMPRE ES ASÍ!"
             d "Por favor.... Paren...."
         else:
             a1 "Vamos Dylan. Tu puedes."
@@ -276,8 +290,10 @@ label start:
                 "Si son 30 niños para 30 moscas.... ¿no serían 3 minutos igualmente?":
                     a2 "Oye si.... me gusta."
                     a1 "Y eso que por fin haces algo bien?"
+                    d "{i}...{/i}"
+                    d "{i}...¿ok?{/i}"
                     $ l2_solve = True
-                "Em no tengo ni idea.":
+                "Realmente no tengo ni idea.":
                     a2 "Ah."
                     a3 "No creen que es una hora?"
                     d "Dios..."
@@ -324,11 +340,25 @@ label start:
             if silence == True:
                 mr "Los veo desanimados chicos. ¿Qué pasó?"
                 a1 "¡¡¡DYLAN NO HIZO NADA!!!"
-                mr "Dylan, ya hablamos sobre esto. ¿Te sientes bien?"
-                d "Si señora. No volverá a pasar."
-                mr "Bueno. Resultados salen mañana. Tengan buena tarde, chicos."
+                mr "Dylan..."
+                mr "Ya hablamos sobre esto. ¿Te sientes bien?"
+                d "Si señora."
+                d "...No volverá a pasar."
+                mr "Bueno. Los resultados salen mañana. Tengan buena tarde, chicos."
             else:
                 mr "¡Bien! Tenemos la primera entrega."
-                mr "Mañana entregaré el resultado. ¿Cómo creen que les fue?"
+                mr "Mañana entregaré el resultado del juego. ¿Cómo creen que les fue?"
                 a2 "Ahí vamos, esperamos lo mejor."
                 mr "Ese es el espíritu. ¡Tengan buena tarde chicos!"
+    scene black with pixellate 
+    hide bg_classroom
+    "{i}Después de un día tan ajetreado, llegas a casa muerto de sueño.{/i}"
+    d "{i}{color=#83a5ae}Hm... mamá no está en casa....{/i}{/color}"
+    d "Aprovecharé para descansar."
+    "{i}No paraste por nada de camino a tu cuarto; solo entraste-{/i}"
+    "{i}Recogiste tu mp3 y te desplomaste en tu cama.{/i}"
+    show bg_bed with fade
+    "{i}Lentamente te quedaste dormido,{/i}"
+    "{i}{color=#83a5ae}Transportado a ese bosque encantado...{/i}{/color}"
+    show black with drama 
+    hide bg_bed
