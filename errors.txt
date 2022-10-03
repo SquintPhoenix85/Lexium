@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 374: expected statement.
-    zoomin
-          ^
+File "game/script.rpy", line 440: expected menuitem
+    if problem_cc == 3:
+    ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Fri Sep 30 13:28:16 2022
+Mon Oct  3 08:32:26 2022

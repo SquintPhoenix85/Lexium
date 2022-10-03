@@ -8,16 +8,20 @@ define b = Character("Bibliotecaria", color="#FFFFFF")
 define t = Character("Todos")
 define dramain = Fade(2.5,0.0,0.0)
 define dramaout = Fade(0.0,0.0,2.5) 
+default sour = False
+default sweet = False
+default l1_solve = False
+default l2_solve = False 
+default silence = False
+default movie = False
+default wrongans = 0
+default rightans = 0 
+default problem_cc = 0
+default sugar = 0
+default flour = 0
+default butter = 0
 label start:
     #first level start
-    default sour = False
-    default sweet = False
-    default l1_solve = False
-    default l2_solve = False 
-    default silence = False
-    default movie = False
-    default wrongans = 0
-    default rightans = 0 
     scene black
     hide bg_day1 with fade
     play music salem volume 0.2
@@ -67,37 +71,34 @@ label start:
     m "Necesito que vayas al súper, y me consigas salsa de tomate con {i}mostaza dulce{/i}."
     m "No la confundas, la necesito para hacer la comida."
     
-    d "...Bueno."
+    d "..bueno."
     d "Enseguida vengo."
 
     hide dylan_talk_small with dissolve
     hide mom_idle with dissolve 
-    
     scene bg_street with fade
     hide bg_kitchen 
-    
     "{i}Después de una corta caminata, llegas al supermercado.{/i}"
     "{i}Nunca te gusta salir a caminar, hay mucho ruido y tantas personas te ponen nervioso;{/i}"
     "{i}Pero hoy la tarde se veía especialmente magnífica, pero no sabías con certeza porqué.{/i}"
-
     scene bg_market with fade
     hide bg_street 
-    "{i}Al entrar al supermercado, te topaste con un póster clásico de películas.{/i}"
-    "{i}Era una peli clásica, de las que normalmente ves..{/i}"
+    "{i}Al entrar al supermercado, te topaste con un póster de cine en una de las paredes.{/i}"
+    "{i}Parecía una peli clásica, de las que normalmente ves..{/i}"
     "{i}Querías verla, pero no podías entender el nombre...{/i}"
     show poster_placeholder_m with pixellate
     d "{i}{color=#8f8f8f}¿Qué dice el póster?{/i}{/color}"
     menu:
         "¿Ciudadano Kane?":
-            "{i}Decidiste que, cuando tuvieras tiempo, buscarías si se llamaba así.{/i}"
+            "{i}Decidiste que, cuando tuvieras tiempo, buscarías si realmente se llamaba así.{/i}"
             $ movie = True
         "¿Eludadamo James?":
-            "{i}Algo no cuadraba en el nombre de la peli, pero la ibas a buscar de igual manera.{/i}"
+            "{i}Algo no cuadraba en el nombre de la peli, pero buscarías más tarde de igual manera.{/i}"
             $ movie = False
     hide poster_placeholder_m with dissolve 
     show dylan_idle_small with easeinleft
-    "{i}Entras al pasillo, y llegas directamente al pasillo de los aderezos{/i}."
-    "{i} Ves dos recipientes de salsa.{/i}"
+    "{i}Entras al súpermercado, y llegas directamente al pasillo de los aderezos{/i}."
+    "{i}Ves dos recipientes de salsa.{/i}"
     d "{i}{color=#8f8f8f}¿Cuál fue la salsa que pidió mamá?{/color}{/i}"
     menu:
         "Escoges el que dice \"noztasa aqrla\"":
@@ -125,7 +126,7 @@ label start:
         hide mom_idle with dissolve
         hide dylan_smile_small with dissolve
         "{i}Mamá y tú cenaron juntos- ¡la comida estaba deliciosa! Justo como lo había dicho ella.." 
-        "{i}Al fin y al cabo, te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
+        "{i}Al terminar, te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
         show black  
         hide bg_kitchen with fade
     elif sweet == True:
@@ -137,7 +138,7 @@ label start:
         hide mom_idle with dissolve
         hide dylan_idle_small with dissolve
         "{i}Mamá y tú cenaron juntos, pero un sabor amargo permaneció en tu boca todo el tiempo-{/i}"
-        "{i}Al fin y al cabo te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
+        "{i}Al terminar, te sentías tan cansado que fuiste a dormir a tu cuarto enseguida.{/i}"
         show black 
         hide bg_kitchen with fade
 
@@ -160,7 +161,7 @@ label start:
     scene dream_river with fade
     hide dream_forest
     "{i}De la nada, fuiste transportado a otro lado, parece que del mismo bosque.{/i}"
-    "{i}Era un río, iridiscente, como si hubiera una bombilla por debajo del mismo...{/i}"
+    "{i}Era un río, iridiscente, como si hubiera una bombilla por debajo..{/i}"
     "{i}Parecía algo {b}mágico{/b}, el agua cristalina y los pequeños nenúfares..{/i}"
     "{i}Fue en ese entonces que notaste una hojita, con algo escrito en ella.{/i}"
     d "{i}El futuro está en tus manos...{/i}"
@@ -184,8 +185,8 @@ label start:
     "{i}Te cambiaste lo más rapido posible, y saliste al colegio.{/i}"
     scene bg_street with fade
     hide bg_room
-    "{i} Después de ese sueño, querías pasar por el parque, puede que hoy no estuviera tan concurrido como otros días.{/i}"
-    "{i}Ahora ibas un poco corto de tiempo, así que solo fuiste directo a la escuela.{/i}"
+    "{i}Después de ese sueño, querías pasar por el parque, puede que hoy no estuviera tan concurrido como otros días.{/i}"
+    "{i}...pero ibas un poco corto de tiempo, así que solo fuiste directo a la escuela.{/i}"
     scene black with pixellate
     "{i}Después de una corta caminata, finalmente llegaste a tu salón.{/i}"
     "{i}Tu 'problema', como lo llamaban todos, o al menos la mayoría, no te dejaba estudiar muy bien.{/i}"
@@ -301,7 +302,7 @@ label start:
     if l1_solve == True: 
         if l2_solve == True:
             a1 "Vamos a entregar esto. ¡Ganaremos!"
-            "{i} Tus amigos te contagiaron su entusiasmo y no pudiste contener la felicidad-{/i}"
+            "{i}Tus amigos te contagiaron su entusiasmo y no pudiste contener la felicidad-{/i}"
             t "{i}En unísono-{/i} ¡VAMOS!"
             scene bg_classroom with pixellate
             hide bg_hall
@@ -316,7 +317,7 @@ label start:
             t "¡Entendido!"
     elif l1_solve == True:  
         if l2_solve == False:
-            a1 "Bueno, esperemos que estamos en lo correcto."
+            a1 "Bueno, esperemos que todo esté en lo correcto."
             a3 "Claro, vamos."
             scene bg_classroom with fade
             hide bg_hall
@@ -373,7 +374,7 @@ label start:
     "{i}{color=#8f8f8f}Ven aquí, niño.....{/i}{/color}"
     "{i}{color=#8f8f8f}Tanto talento....{/i}{/color}"
     "{i}{color=#8f8f8f}Tanto potencial....{/i}{/color}"
-    "{i}{color=#8f8f8f}Todo gastado.....{/i}{/color}"
+    "{i}{color=#8f8f8f}Tan malgastado.....{/i}{/color}"
     "{i}{color=#8f8f8f}Acércate.....{/i}{/color}"
     "{i}{color=#8f8f8f}Y cumple tus sueños....{/i}{/color}"
     "{i}La voz penetró en tu alma....{/i}"
@@ -393,9 +394,96 @@ label start:
     "{i}Tuviste suerte- mamá aún no había llegado.{/i}"
     "{i}Se hubiera armado la de las grandes si hubiera visto esto...{/i}"
     "{i}Decidiste intentar hacer los problemas de matemáticas de nuevo.{/i}"
-    d "A ver.... el problema dice-"
-    "Zi qara qreqarar um qazte1 mecezitaz:"
-    "l/E de 7S0g be asúcar-"
-    "E/4 kuartoz be un cilo de harima-"
-    "y E/S be uma darra de namtepuilla be 200 qranoz-"
-    "¿Qué cantidades requieres para cada uno?"
+    d "{color=#8f8f8f}A ver.... el problema dice-{/color}"
+    d "{color=#8f8f8f}Zi qara qreqarar um qazte1 mecezitaz:{/color}"
+    d "{color=#8f8f8f}l/E de 7S0g be asucar-{/color}"
+    d "{color=#8f8f8f}E/A kuartoz be un cilo de narima-{/color}"
+    d "{color=#8f8f8f}y E/S be uma darra de namtepuilla be 200 qranoz-{/color}"
+    d "{color=#8f8f8f}¿Qué cantidades ({b}en gramos{/b}) requieres para cada uno?{/color}"
+    menu problem_c:
+        "l/E de TS0g be asucar...":
+            menu problem_s:
+                "Ehh.... 720 sobre 3..... ¡son 240g!":
+                    $ sugar = 240
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+                "Hmm.... 750 sobre 3..... ¿no serían 250g?":
+                    $ sugar = 250
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c 
+                "Agh... 920 sobre 3.... ¡No da!":
+                    $ sugar = 0
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+        "E/A kuartoz de un cilo de harima...":
+            menu problem_f:
+                "Ehm... Si un kilo es 1000g... ¡750g!":
+                    $ flour = 750
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+                "Uh.... ¿Serían solo 3/4 y ya no?":
+                    $ flour = 0
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+                "... Si un kilo es 1000g.... ¡son 250g!":
+                    $ flour = 250
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+        "E/S de una barra de mantequilla de 200g...":
+            menu problem_b:
+                "¿3/2 de 200?.... ¡¿es 300?! Ni idea...":
+                    $ butter = 300
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+                "Mm.. ¿1/5 de 200?.. ¡40!":
+                    $ butter = 40
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c 
+                "3/5 de 200.. ¡Eureka! ¡120!":
+                    $ butter = 120 
+                    $ problem_cc = problem_cc + 1
+                    if problem_cc >= 3:
+                        jump break_1
+                    else:
+                        jump problem_c
+    label break_1:
+        d "Por fin..."
+    "{i}Después de resolver los problemas revisaste tu cuadernillo por las respuestas.{/i}"
+    $ solve_c = sugar + flour + butter 
+    if solve_c == 1120:
+        "{i}{color=#b1f5a4}La solución te dió justo como lo indicaba el libro-{/i}{/color}"
+        "{i}¡Una definitiva mejora!{/i}"
+        d "¡Si!"
+        $ rightans = rightans + 1
+    elif solve < 1120:
+        "{i}{color=#8f8f8f}Hubo uno o dos datos que te salieron mal, pero igual mejoraste-{i}{/color}"
+        "{i}Aunque no quedaste satisfecho con esto- otro mal sabor de boca.{i}"
+        $ wrongans = wrongans + 1
+    elif solve > 1120 or solve < 530:
+        "{i}{color=#f5a5a4}El resultado que decía tu cuadernillo era absolutamente diferente a lo que tu hallaste-{/i}{/color}"
+        "{i}Te sentías como un tonto, tanto esfuerzo por poco resultado..{/i}"
+        $ wrongans = wrongans + 1
