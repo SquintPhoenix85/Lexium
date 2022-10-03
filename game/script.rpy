@@ -488,5 +488,5 @@ label start:
         "{i}Te sentías como un tonto, tanto esfuerzo por poco resultado..{/i}"
         $ wrongans = wrongans + 1
     m "¡Llegué!"
-    d "¡Hola ma!"
+    
     
