@@ -479,11 +479,14 @@ label start:
         "{i}¡Una definitiva mejora!{/i}"
         d "¡Si!"
         $ rightans = rightans + 1
-    elif solve < 1120:
+    elif solve_c < 1120:
         "{i}{color=#8f8f8f}Hubo uno o dos datos que te salieron mal, pero igual mejoraste-{i}{/color}"
         "{i}Aunque no quedaste satisfecho con esto- otro mal sabor de boca.{i}"
         $ wrongans = wrongans + 1
-    elif solve > 1120 or solve < 530:
+    elif solve_c > 1120 or solve_c < 530:
         "{i}{color=#f5a5a4}El resultado que decía tu cuadernillo era absolutamente diferente a lo que tu hallaste-{/i}{/color}"
         "{i}Te sentías como un tonto, tanto esfuerzo por poco resultado..{/i}"
         $ wrongans = wrongans + 1
+    m "¡Llegué!"
+    d "¡Hola ma!"
+    

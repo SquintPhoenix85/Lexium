@@ -1,22 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 473, in script
-    jump .break_1
-ScriptError: could not find label 'problem_b.break_1'.
+  File "game/script.rpy", line 480, in script
+    d "¡Si!"
+  File "game/script.rpy", line 485, in <module>
+    $ wrongans = wrongans + 1
+NameError: name 'solve' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 473, in script
-    jump .break_1
-  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 1974, in execute
-    rv = renpy.game.script.lookup(target)
-  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\script.py", line 927, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'problem_b.break_1'.
+  File "game/script.rpy", line 480, in script
+    d "¡Si!"
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 2115, in execute
+    if renpy.python.py_eval(condition):
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\python.py", line 1083, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\python.py", line 1076, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 485, in <module>
+    $ wrongans = wrongans + 1
+NameError: name 'solve' is not defined
 
 Windows-10-10.0.19041 AMD64
 Ren'Py 8.0.2.22081402
 Lexium PREVIEW - 0.2a
-Mon Oct  3 08:37:10 2022
+Mon Oct  3 08:54:13 2022
