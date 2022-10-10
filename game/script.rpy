@@ -142,19 +142,23 @@ label start:
         show black 
         hide bg_kitchen with fade
 
-    
+    #noche-dia1
     "{i}Normalmente, no sueñas mucho.{/i}"
-    "{i}Tu realidad de videojuegos y películas deja mucho que desear en términos de soñar.{/i}"
-    scene dream_bg_street with fade
-    hide black
-    "{i}Solo deseas que un día pudieras caminar por la calle sin tener que sentirte tan abrumado por los sonidos de la gente y los autos{/i}"
-    "{i}De repente, te das cuenta de que el parque al que usualmente vas está cubierto de nieve, blanca y suave.{/i}"
-    scene dream_forest with fade
-    hide dream_bg_street
-    "{i}El parque que visitabas todos los días se había convertido en un bosque, extenso, inmiscuido en un aura de oscuridad, y neblina, tenía un aura casi mágica.{/i}"
-    "{i}Continuaste caminando, y te encontraste a la distancia con una pequeña ave, posada al pie de un tronco hueco...{/i}"
+    "{i}Tu realidad de música y películas deja mucho que desear en términos de soñar.{/i}"
+    "{i}Aunque hoy sería {color=#7fb8c3}diferente..{/color}{/i}"
+    "{i}Por un instante sentiste el viento-{/i}"
+    "{i}Estabas cayendo.{/i}"
+    d "¡AHHHH!"
+    scene black with vpunch
+    d "Ouch..."
+    "{i}Era una oscuridad completa.{/i}"
+    "{i}A lo lejos, veías una {color=#7fb8c3}luz{/color}...{/i}"
+    "{i}-que llamaba a ti.{/i}"
+    "{color=#8f8f8f}Dylan....{/i}"
+    scene dream_forest with dramain 
+    "{i}Lentamente te acercaste, curioso de lo que podría ser.{/i}"
     d "¿Un petirrojo?"
-    "{i}Lo miraste curioso, y él pareció hacer lo mismo."
+    "{i}Lo miraste curioso, y él pareció hacer lo mismo.{/i}"
     d "¿Que haces aquí amigo?"
     "{i}El petirrojo, casi como si te conociera, despegó, revoloteando hasta posarse en tu hombro.{i}"
     "{i}A tus oidos llegó una melodía suave y dulce... Era el canto de la pequeña ave.{/i}"
@@ -172,6 +176,7 @@ label start:
     hide dream_river
     "{i}Te estabas acercando más y más al fondo, al origen de la voz, y fue justo entonces cuando...{/i}"
     "{i}{color=#FFFFFF}¡¡DESPIERTA!!{/i}{/color}"
+
     scene bg_room with dissolve
     hide black
     with vpunch 
@@ -209,11 +214,8 @@ label start:
     mr "Ahora vayan, que no tienen todo el día."
     hide professor with dissolve 
     "{i}Te reúnes con tu grupo de amigos para que hablen sobre su estrategia.{/i}"
-    show dylan_idle_small with fade
-    a1 "Bien, empezaremos por la biblioteca y los pasillos, ¿alguien me quiere acompañar a la biblioteca?"
-    "{i}Figurabas que, al ser la biblioteca, habría más silencio que en el pasillo o el patio.{/i}"
-    d "¡¡YO!!"
-    a1 "Em, ok pues."
+    a1 "Ok... Esta es la lista."
+    show list_hunt
     scene bg_hall with pixellate
     hide bg_classroom
     "{i}Te encaminas a la biblioteca junto a Joel.{/i}"
@@ -227,22 +229,12 @@ label start:
     d "¡Ah, lo siento!"
     "{i}Sales rápidamente de la biblioteca, junto a Joel."
     a1 "¡Bien! A ver el acertijo."
-    d "{i}{color=#8f8f8f}Hay Z qabres y Z hijos, qero zolo hay E qerzonaz. ¿Puienez som?{/i}{/color}"
-    menu:
-        "¿No serán un abuelo, un padre y un hijo?":
-            a1 "Hmmm... puede ser, habrá que mirar."
-            $ l1_solve=True
-        "No estoy muy seguro, nunca me gustaron estos problemas.":
-            a1 "Pero Dylan, si sigues actúando así nunca llegarás a nada...."
-            $ l1_solve=False
-        "¿Tu que crees que es?":
-            a1 "Hmm... de pronto son una pareja y un abuelo.. no sé."
-            $ l1_solve=False
-        "{i}Te quedas callado, nervioso.{/i}":
-            a1 "¿Dylan? Estás raro, man."
-            d "¡AH! Ah, si si. No pasa nada."
-            $ l1_solve=False
-            $ silence=True 
+    d "{i}Sin ser bestia un buen lomo...{/i}"
+    d "{i}Sin ser árbol, tengo hoja...{/i}"
+    d "{i}Solo adultos pueden entrar....{/i}"
+    d "{i}Pero no te confundas...{/i}"
+    d "{i}Y mi nombre en cada tomo...{/i}"
+    d "{i}Bordeado de otros como yo me encontrarás...{/i}"
     a1 "Regresemos con los chicos, vamos a ver que han visto."
     "{i}Aún distraido y cansado, respondes-{/i}"
     d "Ok, vamos."
@@ -395,6 +387,8 @@ label start:
     "{i}Se hubiera armado la de las grandes si hubiera visto esto...{/i}"
     "{i}Decidiste intentar hacer los problemas de matemáticas de nuevo.{/i}"
     d "{color=#8f8f8f}A ver.... el problema dice-{/color}"
+    show black with fade
+    hide bg_room 
     d "{color=#8f8f8f}Zi qara qreqarar um qazte1 mecezitaz:{/color}"
     d "{color=#8f8f8f}l/E de 7S0g be asucar-{/color}"
     d "{color=#8f8f8f}E/A kuartoz be un cilo de narima-{/color}"
@@ -488,5 +482,25 @@ label start:
         "{i}Te sentías como un tonto, tanto esfuerzo por poco resultado..{/i}"
         $ wrongans = wrongans + 1
     m "¡Llegué!"
-    
-    
+    "{i}Saliste de tu cuarto a saludar a mamá.{/i}"
+    scene bg_kitchen
+    hide bg_room
+    show mom_idle at left
+    if rightans >= 1:
+        show dylan_smile_small at right
+        with moveinleft
+        d "¡Hola ma!"
+        m "¿Cómo te va, mijito?"
+        d "¿Bien ma, y a ti?"
+        m "Muy bien... ¡gracias!"
+        m "Hoy te noto diferente, hijo."
+        m "¿Que ha pasado?"
+        d "Me ha ido bien en la escuela, he mejorado en matemáticas..."
+        m "Me alegro hijo."
+        m "Recuerda lo que siempre te digo---"
+        m "Persevera..."
+        d "..y obtendrás buenos resultados."
+        m "Ese es el ánimo!"
+    elif wrongans >= 2:
+        show dylan_idle_small at right
+        
