@@ -1,28 +1,70 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 480, in script
-    d "¡Si!"
-  File "game/script.rpy", line 485, in <module>
-    $ wrongans = wrongans + 1
-NameError: name 'solve' is not defined
+While loading <renpy.display.im.Image object ('images/doctors_note_s.png') at 0x0000000004e3a5e0>:
+  File "game/script.rpy", line 289, in script
+    a2 "No logro ver que dice..."
+Exception: Could not load image 'images/doctors_note_s.png': OSError('Could not open \'D:\\\\Lexium\\\\game\\\\images/doctors_note_s.png\': b"Couldn\'t open D:\\\\Lexium\\\\game\\\\images/doctors_note_s.png"')
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 480, in script
-    d "¡Si!"
-  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 2115, in execute
-    if renpy.python.py_eval(condition):
-  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\python.py", line 1083, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "G:\Ren'Py\renpy-8.0.2-sdk\renpy\python.py", line 1076, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 485, in <module>
-    $ wrongans = wrongans + 1
-NameError: name 'solve' is not defined
+  File "game/script.rpy", line 289, in script
+    a2 "No logro ver que dice..."
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\ast.py", line 921, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\exports.py", line 1373, in say
+    who(what, *args, **kwargs)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\character.py", line 1266, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\character.py", line 927, in do_display
+    display_say(who,
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\character.py", line 666, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\core.py", line 3377, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs) # type: ignore
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\core.py", line 3906, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\core.py", line 2602, in draw_screen
+    surftree = renpy.display.render.render_screen(
+  File "render.pyx", line 495, in renpy.display.render.render_screen
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\transform.py", line 747, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\image.py", line 505, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\image.py", line 308, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 266, in renpy.display.render.render
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\im.py", line 627, in render
+    return cache.get(self, render=True)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\im.py", line 295, in get
+    surf = image.load()
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\im.py", line 720, in load
+    raise e
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\im.py", line 699, in load
+    surf = renpy.display.pgrender.load_image(f, filename)
+  File "D:\Ren'Py\renpy-8.0.2-sdk\renpy\display\pgrender.py", line 160, in load_image
+    raise Exception("Could not load image {!r}: {!r}".format(filename, e))
+Exception: Could not load image 'images/doctors_note_s.png': OSError('Could not open \'D:\\\\Lexium\\\\game\\\\images/doctors_note_s.png\': b"Couldn\'t open D:\\\\Lexium\\\\game\\\\images/doctors_note_s.png"')
 
 Windows-10-10.0.19041 AMD64
 Ren'Py 8.0.2.22081402
 Lexium PREVIEW - 0.2a
-Mon Oct  3 08:54:13 2022
+Thu Nov  3 10:42:47 2022
