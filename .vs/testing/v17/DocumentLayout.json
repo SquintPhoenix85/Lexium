@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Nueva carpeta\\Nueva carpeta\\testing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CF3C95E4-D29F-B640-1A4B-3F249658EFB8}|Assembly-CSharp.csproj|f:\\nueva carpeta\\nueva carpeta\\testing\\assets\\fps\\scripts\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF3C95E4-D29F-B640-1A4B-3F249658EFB8}|Assembly-CSharp.csproj|solutionrelative:assets\\fps\\scripts\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{011AE087-6EAD-ECBB-BB93-04DB06DDA5E4}|fps.Gameplay.csproj|F:\\Nueva carpeta\\Nueva carpeta\\testing\\assets\\fps\\scripts\\gameplay\\playercharactercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{011AE087-6EAD-ECBB-BB93-04DB06DDA5E4}|fps.Gameplay.csproj|solutionrelative:assets\\fps\\scripts\\gameplay\\playercharactercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Interactable.cs",
+              "DocumentMoniker": "F:\\Nueva carpeta\\Nueva carpeta\\testing\\Assets\\FPS\\Scripts\\Interactable.cs",
+              "RelativeDocumentMoniker": "Assets\\FPS\\Scripts\\Interactable.cs",
+              "ToolTip": "F:\\Nueva carpeta\\Nueva carpeta\\testing\\Assets\\FPS\\Scripts\\Interactable.cs",
+              "RelativeToolTip": "Assets\\FPS\\Scripts\\Interactable.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T19:17:19.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerCharacterController.cs",
+              "DocumentMoniker": "F:\\Nueva carpeta\\Nueva carpeta\\testing\\Assets\\FPS\\Scripts\\Gameplay\\PlayerCharacterController.cs",
+              "RelativeDocumentMoniker": "Assets\\FPS\\Scripts\\Gameplay\\PlayerCharacterController.cs",
+              "ToolTip": "F:\\Nueva carpeta\\Nueva carpeta\\testing\\Assets\\FPS\\Scripts\\Gameplay\\PlayerCharacterController.cs",
+              "RelativeToolTip": "Assets\\FPS\\Scripts\\Gameplay\\PlayerCharacterController.cs",
+              "ViewState": "AQIAAMgAAAAAAAAAAAAjwNgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T18:57:08.921Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

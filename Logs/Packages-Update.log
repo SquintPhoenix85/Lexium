@@ -1,0 +1,43 @@
+
+=== Tue May 14 14:11:50 2024
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.ide.rider@3.0.27
+  com.unity.ide.visualstudio@2.0.22
+  com.unity.ide.vscode@1.2.5
+  com.unity.modules.androidjni@1.0.0
+  com.unity.modules.cloth@1.0.0
+  com.unity.modules.director@1.0.0
+  com.unity.modules.terrainphysics@1.0.0
+  com.unity.modules.tilemap@1.0.0
+  com.unity.modules.uielements@1.0.0
+  com.unity.modules.umbra@1.0.0
+  com.unity.modules.unityanalytics@1.0.0
+  com.unity.modules.vehicles@1.0.0
+  com.unity.modules.video@1.0.0
+  com.unity.modules.wind@1.0.0
+  com.unity.visualscripting@1.9.1
+The following packages were updated:
+  com.unity.collab-proxy from version 1.17.6 to 2.2.0
+  com.unity.learn.iet-framework from version 2.2.3 to 3.1.1
+  com.unity.probuilder from version 5.0.6 to 5.2.2
+  com.unity.render-pipelines.universal from version 12.1.7 to 12.1.14
+  com.unity.timeline from version 1.6.4 to 1.6.5
+
+=== Tue May 28 10:08:28 2024
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+  com.unity.ai.navigation@1.1.5
+The following packages were updated:
+  com.unity.collab-proxy from version 2.2.0 to 2.3.1
+  com.unity.ide.rider from version 3.0.27 to 3.0.28
+  com.unity.learn.iet-framework from version 3.1.1 to 3.1.3
+  com.unity.render-pipelines.universal from version 12.1.14 to 14.0.11
+  com.unity.timeline from version 1.6.5 to 1.7.6
+  com.unity.visualscripting from version 1.9.1 to 1.9.4
