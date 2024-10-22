@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "F:\\Lexium-Repo\\Lexium\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|f:\\lexium-repo\\lexium\\assets\\starterassets\\thirdpersoncontroller\\scripts\\thirdpersoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|solutionrelative:assets\\starterassets\\thirdpersoncontroller\\scripts\\thirdpersoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|F:\\Lexium-Repo\\Lexium\\assets\\resources\\minigame spanish\\scripts\\wordchanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|solutionrelative:assets\\resources\\minigame spanish\\scripts\\wordchanger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|f:\\lexium-repo\\lexium\\assets\\resources\\palabrashandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|solutionrelative:assets\\resources\\palabrashandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|F:\\Lexium-Repo\\Lexium\\assets\\resources\\minigame spanish\\datajson\\letterassociation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|solutionrelative:assets\\resources\\minigame spanish\\datajson\\letterassociation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|f:\\lexium-repo\\lexium\\assets\\resources\\minigame spanish\\datajson\\letterinputfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3158A6BD-FE52-58DA-417A-3AE6F3292409}|Assembly-CSharp.csproj|solutionrelative:assets\\resources\\minigame spanish\\datajson\\letterinputfield.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ThirdPersonController.cs",
-              "DocumentMoniker": "F:\\Lexium-Repo\\Lexium\\Assets\\StarterAssets\\ThirdPersonController\\Scripts\\ThirdPersonController.cs",
-              "RelativeDocumentMoniker": "Assets\\StarterAssets\\ThirdPersonController\\Scripts\\ThirdPersonController.cs",
-              "ToolTip": "F:\\Lexium-Repo\\Lexium\\Assets\\StarterAssets\\ThirdPersonController\\Scripts\\ThirdPersonController.cs",
-              "RelativeToolTip": "Assets\\StarterAssets\\ThirdPersonController\\Scripts\\ThirdPersonController.cs",
-              "ViewState": "AQIAAOsAAAAAAAAAAAAAwAEBAABjAAAA",
+              "DocumentIndex": 1,
+              "Title": "PalabrasHandler.cs",
+              "DocumentMoniker": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\PalabrasHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Resources\\PalabrasHandler.cs",
+              "ToolTip": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\PalabrasHandler.cs",
+              "RelativeToolTip": "Assets\\Resources\\PalabrasHandler.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAwwDcAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T12:58:51.255Z",
+              "WhenOpened": "2024-10-04T13:21:51.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LetterInputField.cs",
+              "DocumentMoniker": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\Minigame Spanish\\DataJson\\LetterInputField.cs",
+              "RelativeDocumentMoniker": "Assets\\Resources\\Minigame Spanish\\DataJson\\LetterInputField.cs",
+              "ToolTip": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\Minigame Spanish\\DataJson\\LetterInputField.cs",
+              "RelativeToolTip": "Assets\\Resources\\Minigame Spanish\\DataJson\\LetterInputField.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T18:01:35.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LetterAssociation.cs",
+              "DocumentMoniker": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\Minigame Spanish\\DataJson\\LetterAssociation.cs",
+              "RelativeDocumentMoniker": "Assets\\Resources\\Minigame Spanish\\DataJson\\LetterAssociation.cs",
+              "ToolTip": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\Minigame Spanish\\DataJson\\LetterAssociation.cs",
+              "RelativeToolTip": "Assets\\Resources\\Minigame Spanish\\DataJson\\LetterAssociation.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T17:56:06.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WordChanger.cs",
+              "DocumentMoniker": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\Minigame Spanish\\Scripts\\WordChanger.cs",
+              "RelativeDocumentMoniker": "Assets\\Resources\\Minigame Spanish\\Scripts\\WordChanger.cs",
+              "ToolTip": "F:\\Lexium-Repo\\Lexium\\Assets\\Resources\\Minigame Spanish\\Scripts\\WordChanger.cs",
+              "RelativeToolTip": "Assets\\Resources\\Minigame Spanish\\Scripts\\WordChanger.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA5wCYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T17:41:54.071Z",
               "EditorCaption": ""
             }
           ]
